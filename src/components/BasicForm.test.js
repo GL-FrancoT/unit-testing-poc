@@ -1,9 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { render, screen, configure } from "@testing-library/react";
+import { createRoot } from "react-dom/client";
 import BasicForm from "./BasicForm";
+
+const container = document.getElementById("app");
+const root = createRoot(container);
 
 test("Renders First Name input label", () => {
   // Arrange
-  render(<BasicForm />);
+  root.render(<BasicForm />);
 
   // Act
 
