@@ -38,6 +38,21 @@ const BasicForm = (props) => {
     formIsValid = true;
   }
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    if (!formIsValid) {
+      return;
+    }
+
+    console.log("Submitted!");
+    console.log(firstNameValue, lastNameValue, emailValue);
+
+    resetFirstName();
+    resetLastName();
+    resetEmail();
+  };
+
   const firstNameClasses = firstNameHasError
     ? "form-control invalid"
     : "form-control";
