@@ -5,6 +5,7 @@ const isEmail = (value) => value.includes("@");
 
 const BasicForm = (props) => {
   const {
+    // First name input validation
     value: firstNameValue,
     isValid: firstNameIsValid,
     hasError: firstNameHasError,
@@ -13,6 +14,7 @@ const BasicForm = (props) => {
     reset: resetFirstName,
   } = useInput(isNotEmpty);
   const {
+    // Last name input validation
     value: lastNameValue,
     isValid: lastNameIsValid,
     hasError: lastNameHasError,
@@ -21,6 +23,7 @@ const BasicForm = (props) => {
     reset: resetLastName,
   } = useInput(isNotEmpty);
   const {
+    // Email input validation
     value: emailValue,
     isValid: emailIsValid,
     hasError: emailHasError,
@@ -28,6 +31,12 @@ const BasicForm = (props) => {
     inputBlurHandler: emailBlurHandler,
     reset: resetEmail,
   } = useInput(isEmail);
+
+  let formIsValid = false;
+
+  if (firstNameIsValid && lastNameIsValid && emailIsValid) {
+    formIsValid = true;
+  }
 
   const firstNameClasses = firstNameHasError
     ? "form-control invalid"
@@ -74,7 +83,7 @@ const BasicForm = (props) => {
         {emailHasError && <p>Please enter a valid email address.</p>}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
