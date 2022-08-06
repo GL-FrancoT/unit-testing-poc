@@ -1,4 +1,4 @@
-import BasicForm from './src/components/BasicForm'
+import BasicForm from './components/BasicForm'
 
 function App() {
   return (
